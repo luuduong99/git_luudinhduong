@@ -1,5 +1,5 @@
-Mỗi thư mục đang làm việc của bạn có 2 tràng thái: 
-Tracked – Là tập tin đã được đánh dấu theo dõi trong Git để bạn làm việc với nó.
-Và trạng thái Tracked nó sẽ có thêm các trạng thái phụ khác là Unmodified (chưa chỉnh sửa gì), 
-Modified (đã chỉnh sửa) và Staged (đã sẵn sàng để commit). 
-Untracked – Là tập tin còn lại mà bạn sẽ không muốn làm việc với nó trong Git.
+Các quan chức Ukraine tuyên bố Kiev "sẵn sàng chiến đấu" và giới quan sát cảnh báo "một thảm kịch không thể tưởng tượng được" sẽ xảy ra sau hơn 2 tuần chiến tranh.
+
+Sáng nay, còi báo động không kích và pháo kích liên tiếp vang lên ở Kiev cùng nhiều thành phố khác. Tin tức cho biết một số vụ nổ lớn đã xảy ra ở Dnipro, Mykolaiv, Nikolaev và Kropyvnytskyi.
+
+Theo truyền thông địa phương, hai kho dầu gần Kiev đang bốc cháy sau các cuộc tấn công của Nga. Một trong hai kho dầu này nằm ở thị trấn Vasylkiv, cách thủ đô Ukraine 36km về phía nam, kho còn lại ở làng Kryachky.
