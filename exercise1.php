@@ -9,8 +9,6 @@
             return true;
         } else if (strpos($a, $book) === false && strpos($a, $res) !== false) {
             return true;
-        } else if ($a = null) {
-            return false;
         } return false;
 
     }
