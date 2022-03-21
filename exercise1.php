@@ -5,7 +5,9 @@
         $book = "book";
         $res = "restaurant";
 
-        if (strpos($a, $book) !== false && strpos($a, $res) === false ) {
+        if ($a) {
+            return true;
+        } else if (strpos($a, $book) !== false && strpos($a, $res) === false ) {
             return true;
         } else if (strpos($a, $book) === false && strpos($a, $res) !== false) {
             return true;
