@@ -9,8 +9,6 @@
             return true;
         } else if (strpos($temp, $book) === false && strpos($temp, $res) !== false) {
             return true;
-        } else if (strpos($temp, $book) !== false && strpos($temp, $res) !== false) {
-            return false;
         } return false;
 
     }
