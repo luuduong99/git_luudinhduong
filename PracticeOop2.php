@@ -3,6 +3,7 @@
     abstract class Country
     {
 	    use Active;
+
         protected $slogan;
 
         abstract public function sayHello();
@@ -28,6 +29,7 @@
             return strpos($this->slogan, $england) !== false || strpos($this->slogan, $english) !== false;
 
         }
+
         public function checkValidSlogan() 
         {
             if($this->sayHello() !== false) {
@@ -40,12 +42,14 @@
 
     class VietnamCountry extends Country implements Boss 
     {
+
         public function sayHello() 
         {
             $vietnam = "vietnam";
             $hust = "hust";
 
             return strpos($this->slogan, $vietnam) !== false && strpos($this->slogan, $hust) !== false;
+
         }
 
         public function checkValidSlogan() 

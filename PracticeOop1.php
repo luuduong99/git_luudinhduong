@@ -6,22 +6,22 @@
         public $check1;
         public $check2;
 
-        function readFile($a) 
+        function readFile($file) 
         {
-            $readFile = file_get_contents($a);
+            $readFile = file_get_contents($file);
             $check = checkValidString($readFile);
             
             if($check) {
-                if($a == "file1.txt") {
+                if($file == "file1.txt") {
                     $check1 = true;
-                }if ($a == "file2.txt") {
+                }if ($file == "file2.txt") {
                     $check2 = true;
                 }
                 echo '<br/>Hợp lệ';
             }else {
-                if ($a == "file1.txt") {
+                if ($file == "file1.txt") {
                     $check1 = false;
-                }if ($a == "file2.txt") {
+                }if ($file == "file2.txt") {
                     $check2 = false;
                 }
                 echo '<br/>Không hợp lệ';
@@ -29,17 +29,17 @@
             }
 
         }
-}
+    }
 
-    function checkValidString($a)
+    function checkValidString($file)
     {
-        $book = "book";
-        $res = "restaurant";
-        if (strpos($a, $book) !== false && strpos($a, $res) === false ) {
-            return true;
-        } else if (strpos($a, $book) === false && strpos($a, $res) !== false) {
-            return true;
+        $file1 = 'book';
+        $file2 = 'restaurant';
+
+        if ((strpos($file, $file1) !== false && strpos($file, $file2) === false) || (strpos($file, $file1) === false && strpos($file, $file2) !== false) ) { 
+            return true; 
         } return false;
+
     }
 
     $object1 = new ExerciseString;
