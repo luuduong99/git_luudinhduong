@@ -12,7 +12,6 @@ abstract class Country
 {
     protected $slogan;
     
-   
     public function setSlogan($slogan) 
     {
         return $this->slogan = $slogan;
