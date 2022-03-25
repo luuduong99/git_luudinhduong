@@ -23,11 +23,12 @@
 
         function checkValidString($str, $text1, $text2) 
         {
-             if (((strstr($str, $text1) !== false) && (strstr($str, $text2) === false))
-             || ((strstr($str, $text1) === false) && (strstr($str, $text2) !== false))) {
-             return true;
-        }
-        return false;
+            if (((strstr($str, $text1) !== false) && (strstr($str, $text2) === false))
+            || ((strstr($str, $text1) === false) && (strstr($str, $text2) !== false))
+            ) {
+                return true;
+            }
+            return false;
         }
 
         public function writeFile($text, $resultFile)
