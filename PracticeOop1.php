@@ -2,49 +2,65 @@
 
     class ExerciseString 
     {
-
         public $check1;
         public $check2;
 
-        function readFile($file) 
+        function getCheck1()
         {
-            $readFile = file_get_contents($file);
-            $check = checkValidString($readFile);
-            
-            if($check) {
-                if($file == "file1.txt") {
-                    $check1 = true;
-                }if ($file == "file2.txt") {
-                    $check2 = true;
-                }
-                echo '<br/>Hợp lệ';
-            }else {
-                if ($file == "file1.txt") {
-                    $check1 = false;
-                }if ($file == "file2.txt") {
-                    $check2 = false;
-                }
-                echo '<br/>Không hợp lệ';
-  
+            return $this->check1;
+        }
+
+        function getCheck2 ()
+        {
+            return $this->check2;
+        }
+
+        public function readFile($file)
+        {
+            $data = file_get_contents($file);
+            return $data;
+        }
+
+        function checkValidString($str, $text1, $text2) 
+        {
+            if (((strstr($str, $text1) !== false) && (strstr($str, $text2) === false))
+            || ((strstr($str, $text1) === false) && (strstr($str, $text2) !== false))
+            ) {
+                return true;
+            }
+            return false;
+        }
+
+        public function writeFile()
+        {
+            $resultFile = fopen("result_file.txt", "w") or die("Unable to open file!");
+            if ($this->check1 == true) {
+                fwrite($resultFile, "Check1 là chuỗi hợp lệ\n");
+            }  else {
+                fwrite($resultFile, "Check1 là chuỗi không hợp lệ\n");
             }
 
+            if ($this->check2 == true) {
+                fwrite($resultFile, "Check2 là chuỗi hợp lệ\n");
+            }  else {
+                fwrite($resultFile, "Check2 là chuỗi không hợp lệ\n");
+            }
+            fclose($resultFile);
         }
     }
 
-    function checkValidString($file)
-    {
-        $file1 = 'book';
-        $file2 = 'restaurant';
+    $text1 = "book";
+    $text2 = "restaurant";
+    $object1 = new ExerciseString();
+    $data1 = $object1->readFile('file1.txt');
+    $data2 = $object1->readFile('file2.txt');
 
-        if ((strpos($file, $file1) !== false && strpos($file, $file2) === false) || (strpos($file, $file1) === false && strpos($file, $file2) !== false) ) { 
-            return true; 
-        } return false;
+    $object1->check1 = $object1->checkValidString($data1, $text1, $text2);
+    var_dump($object1->getCheck1());    
+    echo "</br>";
 
-    }
+    $object1->check2 = $object1->checkValidString($data2, $text1, $text2);
+    var_dump($object1->getCheck2());    
 
-    $object1 = new ExerciseString;
-    $object1 -> readFile('file1.txt');
-    $object2 = new ExerciseString;
-    $object2 -> readFile('file2.txt');
-
+    $object1->writeFile();
     

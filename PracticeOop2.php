@@ -1,77 +1,93 @@
 <?php
 
-    abstract class Country
+trait Active 
+{
+    public function defindYourSelf() 
     {
-	    use Active;
-
-        protected $slogan;
-
-        abstract public function sayHello();
-
-        public function setSlogan ($slogan) 
-        {
-            $this->slogan = $slogan;
-        }
+        return get_class();
     }
+}
 
-    interface Boss 
-    {
-        public function checkValidSlogan();
-    }
-
-    class EnglandCountry extends Country implements Boss
-    {
-        public function sayHello() 
-        {
-            $england = "england";
-            $english = "english";
-
-            return strpos($this->slogan, $england) !== false || strpos($this->slogan, $english) !== false;
-
-        }
-
-        public function checkValidSlogan() 
-        {
-            if($this->sayHello() !== false) {
-                return true;
-            } return false;
-        }
-
-    }
-
-
-    class VietnamCountry extends Country implements Boss 
-    {
-
-        public function sayHello() 
-        {
-            $vietnam = "vietnam";
-            $hust = "hust";
-
-            return strpos($this->slogan, $vietnam) !== false && strpos($this->slogan, $hust) !== false;
-
-        }
-
-        public function checkValidSlogan() 
-        {
-            if($this->sayHello() !== false) {
-                return true;
-            } return false;
+abstract class Country
+{
+    protected $slogan;
     
-        }
-
+   
+    public function setSlogan($slogan) 
+    {
+        return $this->slogan = $slogan;
     }
     
-    Trait Active 
+    public function getSlogan () 
     {
- 	    public function defindYourSelf()
-        {
- 		    return get_class($this);
- 	    }
-    }
-    $EnglandCountry = new EnglandCountry();
-    $VietnamCountry = new VietnamCountry();
+        return $this->slogan;
+	}
 
-    echo 'I am ' . $EnglandCountry->defindYourSelf(); 
-    echo "<br>";
-    echo 'I am ' . $VietnamCountry->defindYourSelf(); 
+    public function sayHello(){
+
+    }
+}
+
+interface Boss
+{
+    public function checkValidSlogan();
+}
+
+class EnglandCountry extends Country implements Boss
+{
+    use Active;
+    
+    public function sayHello()
+    {
+        return "Hello";
+    }
+    
+    public function checkValidSlogan() 
+    {
+        $str = strtolower($this->slogan);
+        if (strpos($str,"england") == true || strpos($str,"english") == false){
+            return true;
+        } else {
+            return false;
+        } 
+    }
+}
+
+class VietnamCountry extends Country implements Boss 
+{
+    use Active;
+    public function sayHello()
+    {
+        return "Xin chào";
+    }
+    public function checkValidSlogan()
+    {
+        $str = strtolower($this->slogan);
+        if (strpos($str, "vietnam") == true && strpos($str, "hust") == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+$englandCountry = new EnglandCountry();
+$vietnamCountry = new VietnamCountry();
+
+$englandCountry->setSlogan("England is a country that is part of the United Kingdom. It shares land borders with Wales to the west and Scotland to the north. The Irish Sea lies west of England and the Celtic Sea to the southwest.");
+$vietnamCountry->setSlogan("Vietnam is the easternmost country on the Indochina Peninsula. With an estimated 94.6 million inhabitants as of 2016, it is the 15th most populous country in the world.");
+
+echo $englandCountry->sayHello();    
+echo "</br>";
+echo $vietnamCountry->sayHello();   
+echo "</br>";
+
+var_dump($englandCountry->checkValidSlogan());    
+echo "<br>";
+var_dump($vietnamCountry->checkValidSlogan());    
+echo "<br>";
+
+//In ra tên class
+echo 'I am ' . $englandCountry->defindYourSelf();
+echo "<br>";
+echo 'I am ' . $vietnamCountry->defindYourSelf();
