@@ -81,7 +81,6 @@ echo "<br>";
 var_dump($vietnamCountry->checkValidSlogan());    
 echo "<br>";
 
-//In ra tên class
 echo 'I am ' . $englandCountry->defindYourSelf();
 echo "<br>";
 echo 'I am ' . $vietnamCountry->defindYourSelf();
