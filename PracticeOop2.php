@@ -18,9 +18,7 @@ abstract class Country
         return $this->slogan = $slogan;
     }
 
-    public function sayHello() {
-
-    }
+    abstract public function sayHello();
 }
 
 interface Boss

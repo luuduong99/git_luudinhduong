@@ -54,4 +54,3 @@
     $line2 = 'Check2 là chuỗi "' . ($object1->getCheck2() == true ? "hợp lệ" : "không hợp lệ") . '". Chuỗi có ' . $count . " câu.";
     $text = $line1 . $line2;
     $object1->writeFile($text, $resultFile);
-    
