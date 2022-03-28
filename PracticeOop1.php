@@ -47,11 +47,11 @@
     $count = substr_count($data2, ".");
     $object1->check1 = $object1->checkValidString($data1, $text1, $text2);
     var_dump($object1->getCheck1());    
-    $line1 = "Check1 là chuỗi " . ($object1->getCheck1() == true ? "Hợp lệ" : "Không hợp lệ");
+    $line1 = "Check1 là chuỗi " . ($object1->getCheck1() == true ? "Hợp lệ\n" : "Không hợp lệ\n");
     echo "</br>";
     $object1->check2 = $object1->checkValidString($data2, $text1, $text2);
     var_dump($object1->getCheck2());    
-    $line2 = '/nCheck2 là chuỗi "' . ($object1->getCheck2() == true ? "hợp lệ" : "không hợp lệ") . '". Chuỗi có ' . $count . " câu.";
+    $line2 = 'Check2 là chuỗi "' . ($object1->getCheck2() == true ? "hợp lệ" : "không hợp lệ") . '". Chuỗi có ' . $count . " câu.";
     $text = $line1 . $line2;
     $object1->writeFile($text, $resultFile);
     
