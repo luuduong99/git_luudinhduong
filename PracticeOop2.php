@@ -18,12 +18,17 @@ abstract class Country
         return $this->slogan = $slogan;
     }
 
+    public function getSlogan()
+    {
+        return $this->slogan;
+    }
+
     abstract public function sayHello();
 }
 
 interface Boss
 {
-    public function checkValidSlogan();
+    public function checkValidSlogan($str);
 }
 
 class EnglandCountry extends Country implements Boss
@@ -33,9 +38,9 @@ class EnglandCountry extends Country implements Boss
         return "Hello";
     }
     
-    public function checkValidSlogan() 
+    public function checkValidSlogan($str) 
     {
-        $str = strtolower($this->slogan);
+        $test = strtolower($str);
         if (strpos($str, "england") !== false || strpos($str, "english") !== false) {
             return true;
         }
@@ -51,9 +56,9 @@ class VietnamCountry extends Country implements Boss
     {
         return "Xin chào";
     }
-    public function checkValidSlogan()
+    public function checkValidSlogan($str)
     {
-        $str = strtolower($this->slogan);
+        $test = strtolower($str);
         if (strpos($str, "vietnam") !== false && strpos($str, "hust") !== false) {
             return true;
         } 
@@ -71,12 +76,11 @@ $vietnamCountry->setSlogan("Vietnam is the easternmost country on the Indochina 
 echo $englandCountry->sayHello();    
 echo "</br>";
 echo $vietnamCountry->sayHello();  
-
 echo "</br>";
 
-var_dump($englandCountry->checkValidSlogan());    
+var_dump($englandCountry->checkValidSlogan($str));    
 echo "<br>";
-var_dump($vietnamCountry->checkValidSlogan());    
+var_dump($vietnamCountry->checkValidSlogan($str));    
 echo "<br>";
 
 echo 'I am ' . $englandCountry->defindYourSelf();
