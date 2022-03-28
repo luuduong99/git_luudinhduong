@@ -28,7 +28,7 @@ abstract class Country
 
 interface Boss
 {
-    public function checkValidSlogan($str);
+    public function checkValidSlogan($str, $text1, $text2);
 }
 
 class EnglandCountry extends Country implements Boss
@@ -38,10 +38,10 @@ class EnglandCountry extends Country implements Boss
         return "Hello";
     }
     
-    public function checkValidSlogan($str) 
+    public function checkValidSlogan($str, $text1, $text2) 
     {
         $test = strtolower($str);
-        if (strpos($str, "england") !== false || strpos($str, "english") !== false) {
+        if (strpos($test, $text1) !== false || strpos($test, $text2) !== false) {
             return true;
         }
         return false;
@@ -56,10 +56,10 @@ class VietnamCountry extends Country implements Boss
     {
         return "Xin chào";
     }
-    public function checkValidSlogan($str)
+    public function checkValidSlogan($str, $text1, $text2)
     {
         $test = strtolower($str);
-        if (strpos($str, "vietnam") !== false && strpos($str, "hust") !== false) {
+        if (strpos($test, $text1) !== false && strpos($test, $text2) !== false) {
             return true;
         } 
         return false;
@@ -78,9 +78,16 @@ echo "</br>";
 echo $vietnamCountry->sayHello();  
 echo "</br>";
 
-var_dump($englandCountry->checkValidSlogan($str));    
+$tex1 = "england";
+$text2 = "english";
+$str1 = $englandCountry->getSlogan();
+var_dump($englandCountry->checkValidSlogan($str1, $tex1, $text2));    
 echo "<br>";
-var_dump($vietnamCountry->checkValidSlogan($str));    
+
+$text1 = "vietnam";
+$text2 = "hust";
+$str2 = $vietnamCountry->getSlogan();
+var_dump($vietnamCountry->checkValidSlogan($str2, $text1, $text2));    
 echo "<br>";
 
 echo 'I am ' . $englandCountry->defindYourSelf();
