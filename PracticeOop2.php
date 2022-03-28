@@ -4,25 +4,21 @@ trait Active
 {
     public function defindYourSelf() 
     {
-        return get_class();
+        return get_class($this);
     }
 }
 
 abstract class Country
 {
+    use Active;
     protected $slogan;
-    
+
     public function setSlogan($slogan) 
     {
         return $this->slogan = $slogan;
     }
-    
-    public function getSlogan () 
-    {
-        return $this->slogan;
-	}
 
-    public function sayHello(){
+    public function sayHello() {
 
     }
 }
@@ -34,8 +30,6 @@ interface Boss
 
 class EnglandCountry extends Country implements Boss
 {
-    use Active;
-    
     public function sayHello()
     {
         return "Hello";
@@ -44,11 +38,11 @@ class EnglandCountry extends Country implements Boss
     public function checkValidSlogan() 
     {
         $str = strtolower($this->slogan);
-        if (strpos($str,"england") == true || strpos($str,"english") == false){
+        if (strpos($str, "england") !== false || strpos($str, "english") !== false) {
             return true;
-        } else {
-            return false;
-        } 
+        }
+        return false;
+        
     }
 }
 
@@ -62,11 +56,11 @@ class VietnamCountry extends Country implements Boss
     public function checkValidSlogan()
     {
         $str = strtolower($this->slogan);
-        if (strpos($str, "vietnam") == true && strpos($str, "hust") == true) {
+        if (strpos($str, "vietnam") !== false && strpos($str, "hust") !== false) {
             return true;
-        } else {
-            return false;
-        }
+        } 
+        return false;
+        
     }
 }
 
@@ -78,7 +72,8 @@ $vietnamCountry->setSlogan("Vietnam is the easternmost country on the Indochina 
 
 echo $englandCountry->sayHello();    
 echo "</br>";
-echo $vietnamCountry->sayHello();   
+echo $vietnamCountry->sayHello();  
+
 echo "</br>";
 
 var_dump($englandCountry->checkValidSlogan());    
