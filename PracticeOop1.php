@@ -18,8 +18,8 @@
         public function readFile($file)
         {
             $data = file_get_contents($file);
+            
             return $data;
-
         }
 
         function checkValidString($str, $text1, $text2) 
@@ -28,8 +28,8 @@
                 || ((strstr($str, $text1) === false) && (strstr($str, $text2) !== false))) {
                 return true;
             }
-            return false;
 
+            return false;
         }
 
         public function writeFile($text, $resultFile)
