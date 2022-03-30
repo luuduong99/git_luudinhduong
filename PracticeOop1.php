@@ -17,7 +17,6 @@
 
         public function readFile($file)
         {
-            
             $data = file_get_contents($file);
             return $data;
 
@@ -25,7 +24,6 @@
 
         function checkValidString($str, $text1, $text2) 
         {
-
             if (((strstr($str, $text1) !== false) && (strstr($str, $text2) === false))
                 || ((strstr($str, $text1) === false) && (strstr($str, $text2) !== false))) {
                 return true;
