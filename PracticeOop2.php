@@ -43,8 +43,8 @@ class EnglandCountry extends Country implements Boss
         $test = strtolower($str);
         if (strpos($test, $text1) !== false || strpos($test, $text2) !== false) {
             return true;
-        }
 
+        }
         return false;
     }
 }
@@ -60,8 +60,8 @@ class VietnamCountry extends Country implements Boss
         $test = strtolower($str);
         if (strpos($test, $text1) !== false && strpos($test, $text2) !== false) {
             return true;
+            
         } 
-        
         return false; 
     }
 }
