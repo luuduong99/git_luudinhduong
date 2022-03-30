@@ -19,6 +19,7 @@
         {
             $data = file_get_contents($file);
             return $data;
+
         }
 
         function checkValidString($str, $text1, $text2) 
@@ -28,6 +29,7 @@
                 return true;
             }
             return false;
+
         }
 
         public function writeFile($text, $resultFile)
@@ -54,3 +56,4 @@
     $line2 = 'Check2 là chuỗi "' . ($object1->getCheck2() == true ? "hợp lệ" : "không hợp lệ") . '". Chuỗi có ' . $count . " câu.";
     $text = $line1 . $line2;
     $object1->writeFile($text, $resultFile);
+
