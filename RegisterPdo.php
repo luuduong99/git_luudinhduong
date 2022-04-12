@@ -15,17 +15,17 @@ if (isset($_POST['submit'])) {
 // validate
     //name
     if ( $name === 0 && (strlen($name) > 6 && strlen($name) < 200)) {
-        echo "Tên không hợp lệ. Vui lòng nhập lại ";
+        echo "Tên không hợp lệ. Vui lòng nhập lại";
     }
 
     //email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL) && (strlen($email) > 0 && strlen($email) < 255)) {
-        echo "Email không hợp lệ. Vui lòng nhập lại ";
+        echo "Email không hợp lệ. Vui lòng nhập lại";
     }
 
     //phone
     if (strlen($phone) < 10 && strlen($phone) > 20) {
-        echo "Phone không hợp lệ. Vui lòng nhập lại ";
+        echo "Phone không hợp lệ. Vui lòng nhập lại";
 
     } elseif (!preg_match("/^[0-9]*$/", $phone)) {
         echo "Bạn chỉ được nhập giá trị số.";
@@ -33,21 +33,30 @@ if (isset($_POST['submit'])) {
 
     //passwordword
     if (strlen($password) < 6 && strlen($password) > 100) {
-        echo "passwordWord không hợp lệ. Vui lòng nhập lại ";
+        echo "passwordWord không hợp lệ. Vui lòng nhập lại";
     }
 
     //passwordword confirm
     if ($password_comfirm !== $password) {
-        echo "passwordword confirm không hợp lệ. Vui lòng nhập lại ";
+        echo "passwordword confirm không hợp lệ. Vui lòng nhập lại";
     }
     //address
     if (empty($address)) {
-        echo "Chưa nhập địa chỉ. Vui lòng nhập lại ";
+        echo "Chưa nhập địa chỉ. Vui lòng nhập lại";
     }
     $password = md5($_POST['password']);
-    $query = "insert into users set email='$email', name='$name', password='$password', phone='$phone', address='$address'";
-    $statement = executeQuery($query);
-    header("location: LoginPdo.php");
+    $queryCheck = "select email from users where email='$email'";
+	$statement = executeQuery($queryCheck);
+    if($statement->rowCount() > 0)
+		echo "email da ton tai";
+    else {
+        $query = "insert into users set email='$email', name='$name', password='$password', phone='$phone', address='$address'";
+        $statement = executeQuery($query);
+        header("location: LoginPdo.php");
+    }
+    // $query = "insert into users set email='$email', name='$name', password='$password', phone='$phone', address='$address'";
+    // $statement = executeQuery($query);
+    // header("location: LoginPdo.php");
 }
 ?>
 <!DOCTYPE html>

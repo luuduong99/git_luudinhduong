@@ -8,6 +8,7 @@ session_start();
 <body>
 
 <body style="text-align: center; padding-top:200px">
+    <?php echo isset($_SESSION["success"]) ? $_SESSION['success'] : ""; ?>
     <span style="font-weight:400; color:green; font-size:40px;">
         Chúc mừng bạn đã đăng nhập thành công !!!
     </span><br>

@@ -3,8 +3,7 @@
     require('connect.php');
 ?>
 <?php
-    if (isset($_POST['submit']))
-    {
+    if (isset($_POST['submit'])) {
         $email = $_POST['email'];
         $password = md5($_POST['password']);
        //làm sạch thông tin, xóa bỏ các tag html, ký tự đặc biệt
@@ -28,9 +27,12 @@
             $count = $statement->rowCount();
             if($count > 0) {
                 $_SESSION["email_login"] = $_POST["email"];
-                header("location: LoginSuccessPdo.php");
+                $_SESSION["success"] = "<script type='text/javascript'>alert('Đăng nhập thành công!');</script>";
+                header("location:LoginSuccessPdo.php");
             } else {
                 echo '<p>Tài khoản hoặc mật khẩu sai</p>';
+                $_SESSION["errors"] = "<script type='text/javascript'>alert('Đăng nhập thất bại!');</script>";
+                header("location:LoginPdo.php");
             }
         }
     }
@@ -48,6 +50,7 @@
 </head>
 <body>
     <div class="container">
+        <?php echo isset($_SESSION["errors"]) ? $_SESSION['errors'] : ""; ?>
         <div class="panel panel-primary" id="formContent">
             <div class="panel-heading">
                 <h2 class="text-center">Login</h2>
