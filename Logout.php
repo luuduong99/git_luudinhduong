@@ -1,5 +1,4 @@
 <?php
-   session_start();
-   unset($_SESSION["mail"]);
-   unset($_SESSION["password"]);
-   header("location: Login.php");
+session_start();
+unset($_SESSION["email_login"]);
+header("Location: LoginPdo.php");

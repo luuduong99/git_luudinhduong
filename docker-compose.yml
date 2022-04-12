@@ -20,12 +20,12 @@ services:
         - ./:/var/www/html
         - ./docker/nginx_conf:/etc/nginx/conf.d/
       ports:
-      - "8080:80"
+        - "8080:80"
 
     db:
       platform: linux/x86_64
       image: mysql:5.7
-      container_name: mysql-db
+      container_name: mysql-db1
       environment:
         MYSQL_ROOT_PASSWORD: root
         MYSQL_DATABASE: luuduong99
