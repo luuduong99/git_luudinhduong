@@ -54,9 +54,6 @@ if (isset($_POST['submit'])) {
         $statement = executeQuery($query);
         header("location: LoginPdo.php");
     }
-    // $query = "insert into users set email='$email', name='$name', password='$password', phone='$phone', address='$address'";
-    // $statement = executeQuery($query);
-    // header("location: LoginPdo.php");
 }
 ?>
 <!DOCTYPE html>
@@ -81,11 +78,11 @@ if (isset($_POST['submit'])) {
                 <div class="panel-body">
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input required type="text" class="form-control" name="name" placeholder="Tên từ 6-200 kí tự" value="<?php echo $_POST['name']?>">
+                    <input type="text" class="form-control" name="name" placeholder="Tên từ 6-200 kí tự" value="<?php echo isset($_POST["name"]) ? htmlentities($_POST["name"]) : ''; ?>">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input required type="email" class="form-control" name="email" value="<?php echo $_POST['email']?>" required>
+                    <input type="email" class="form-control" name="email" value="<?php echo $_POST['email']?>" >
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone:</label>
@@ -93,14 +90,14 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input required type="password" class="form-control" name="password" value="<?php echo $_POST['password']?>">
+                    <input type="password" class="form-control" name="password" value="<?php echo $_POST['password']?>">
                 </div>
                     <label for="password_comfirm">Confirmation password:</label>
-                    <input required type="password" class="form-control" name="password_comfirm" value="<?php echo $_POST['password_comfirm']?>">
+                    <input type="password" class="form-control" name="password_comfirm" value="<?php echo $_POST['password_comfirm']?>">
                 </div>
                 <div class="form-group">
                     <label for="address">Address:</label>
-                    <input type="text" class="form-control" name="address" value="<?php echo $_POST['address']?>">
+                    <input type="text" class="form-control" name="address" value="<?php echo isset($_POST["address"]) ? htmlentities($_POST["address"]) : ''; ?>">
                 </div>
                 <button class="btn btn-success" name="submit" type="submit">Register</button>
                 <button class="btn btn-success" name="submit" type="submit"><a href="LoginPdo.php" style="color: white;">Login</a></button>
