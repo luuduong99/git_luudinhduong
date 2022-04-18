@@ -19,7 +19,6 @@
         } elseif (strlen(trim($_POST['password'])) < 6 || strlen(trim($_POST['password'])) > 100) {
             $error['password'] = 'Password không được nhỏ hơn 6 kí tự và dài hơn 100 kí tự.';
         }
-
         if (empty($error)) {
             $email = $_POST['email'];
             $password = $_POST['password'];
@@ -27,14 +26,12 @@
             $query = "select * from users where email='$email' and password='$password'";
             $statement = executeQuery($query);
             $count = $statement->rowCount();
-
             if ($count == 1) {
                 $infor = $statement->fetch();
                 $_SESSION["user"] = array(
                     'id' => $infor->id,
                     'email' => $infor->email
                 );
-                
                 if (isset($_POST['remember'])) {
                     setcookie('email', $email, time() + 3600 * 24 * 7);
                     setcookie('password', $password, time() + 3600 * 24 * 7);
@@ -45,9 +42,10 @@
                 }
                     echo "<script> alert('Đăng nhập thành công !');
                     window.location.href='LoginSuccessPdo.php' </script>";
-                } else {
-                    echo "<script> alert('Đăng nhập thất bại !');
-                        window.location.href='Login.php'</script>";
+            } else {
+                echo "<script> alert('Đăng nhập thất bại !');
+                    window.location.href='Login.php'</script>";
             }
         }
     }
+?>
