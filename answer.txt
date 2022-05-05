@@ -1,7 +1,0 @@
-Yêu cầu 8: 
-   Ở branch yêu cầu 7 dùng lệnh "git checkout -b tên-branch" để tạo branch mới mà chuyển từ branch yêu cầu 7 qua branch mới tạo 
-   branch mới tạo sẽ có tất cả các commit từ branch 7.
-   Vì branch chưa có trên gitlab nên dùng lệnh "git push --set-upstream origin ten-branch"
-Yêu cầu 14:
-   Tại branch yêu cầu 10 dùng lệch "git merge tên-branch-yêu cầu 7" để gộp 2 branch của yêu cầu 10 và 7 thành một.
-   sửa lỗi conflict chọn text ở file txt của branch yêu cầu 10 rồi push lên gitlab
